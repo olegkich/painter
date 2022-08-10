@@ -1,0 +1,15 @@
+@import "./variables.scss";
+
+.settingsbar {
+    height: $toolbar-height;
+    display: flex;
+    border: 3px solid $toolbar-border-color;
+    border-radius: 5px;
+
+    height: $toolbar-height;
+
+    width: 75%;
+    box-shadow: 0 2px 3px $toolbar-shadow-color;
+
+    margin-top: 0.5rem;
+}
