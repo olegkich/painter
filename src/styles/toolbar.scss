@@ -19,10 +19,26 @@
         border: 2px solid $toolbar-border-color;
         box-shadow: 0 2px 3px $toolbar-shadow-color;
         outline: none;
+        margin: 0rem 0.5rem;
     }
 
     .brush {
-        background: url("../assets/download.png") no-repeat center center;
+        background: url("../assets/brush.png") no-repeat center center;
+        background-size: cover;
+    }
+
+    .rect {
+        background: url("../assets/rect.png") no-repeat center center;
+        background-size: cover;
+    }
+
+    .line {
+        background: url("../assets/line.png") no-repeat center center;
+        background-size: cover;
+    }
+
+    .undo {
+        background: url("../assets/undo.png") no-repeat center center;
         background-size: cover;
     }
 }

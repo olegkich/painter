@@ -3,6 +3,7 @@ import CanvasState from "../store/CanvasState";
 import ToolState from "../store/ToolState";
 import "../styles/canvas.scss";
 import Brush from "../tools/Brush";
+import Square from "../tools/Rect";
 
 type Props = {};
 
