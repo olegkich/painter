@@ -2,8 +2,10 @@ import Tool from "./Tool";
 
 export default class Rect extends Tool {
     mouseDown: boolean;
-    startX: number | null;
-    startY: number | null;
+    startX: number;
+    startY: number;
+    width: number;
+    height: number;
 
     saved: string;
 
@@ -12,9 +14,12 @@ export default class Rect extends Tool {
         console.log("created a new Rect tool");
         this.mouseDown = false;
 
-        this.startX = null;
-        this.startY = null;
+        this.startX = 0;
+        this.startY = 0;
+        this.width = 0;
+        this.height = 0;
         this.saved = "";
+
         this.listener();
     }
 
@@ -30,7 +35,6 @@ export default class Rect extends Tool {
 
         this.startX = e.pageX - (e.target as HTMLCanvasElement).offsetLeft;
         this.startY = e.pageY - (e.target as HTMLCanvasElement).offsetTop;
-
         this.saved = this.canvas.toDataURL();
     }
 
@@ -42,17 +46,15 @@ export default class Rect extends Tool {
         if (this.mouseDown) {
             let currentX = e.pageX - (e.target as HTMLCanvasElement).offsetLeft;
             let currentY = e.pageY - (e.target as HTMLCanvasElement).offsetTop;
-            let width = currentX - this.startX!;
-            let height = currentY - this.startY!;
-
-            this.draw(currentX, currentY, width, height);
+            this.width = currentX - this.startX;
+            this.height = currentY - this.startY;
+            this.draw(this.startX, this.startY, this.width, this.height);
         }
     }
 
     draw(x: number, y: number, w: number, h: number) {
         const img = new Image();
         img.src = this.saved;
-
         img.onload = () => {
             this.ctx?.clearRect(0, 0, this.canvas.width, this.canvas.height);
             this.ctx?.drawImage(
@@ -67,7 +69,5 @@ export default class Rect extends Tool {
             this.ctx?.fill();
             this.ctx?.stroke();
         };
-
-        console.log("draw");
     }
 }
